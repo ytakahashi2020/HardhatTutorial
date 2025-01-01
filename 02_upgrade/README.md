@@ -69,16 +69,25 @@ etherscan: {
   },
 ```
 
-`npm i @openzeppelin/contracts-upgradeable`
-
 ## 3 Create a contract
 
 ### 1 initialize function
 
+`npm i @openzeppelin/contracts-upgradeable`
+
 use initializer modifier from  
 `import "@openzeppelin/contracts-upgradeable/proxy/utils/initializable.sol";`
 
-### 2 triple function (there is a mistake)
+### 2 set constructor disable
+
+```
+/// @custom:oz-upgrades-unsafe-allow constructor
+    constructor() {
+        _disableInitializers();
+    }
+```
+
+### 3 triple function (there is a mistake)
 
 ```
 function triple(uint256 _number) public pure returns (uint256) {
